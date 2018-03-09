@@ -1,7 +1,6 @@
 from modules.shape_detector import ShapeDetector
 import imutils
 import cv2
-import numpy as np
 
 #image = cv2.imread("modules/shapes_and_colors.jpg")
 cam = cv2.VideoCapture(0)

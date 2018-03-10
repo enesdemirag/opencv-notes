@@ -11,7 +11,7 @@ ratio = image.shape[0] / float(resized.shape[0])
 
 gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-thresh = cv2.threshold(blurred, 60, 255, cv2.THRESH_BINARY)[1]
+thresh = cv2.threshold(blurred, 127, 255, cv2.THRESH_BINARY)[1]
 
 contours = cv2.findContours(thresh.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 contours = contours[0] if imutils.is_cv2() else contours[1]
@@ -35,5 +35,5 @@ for c in contours:
     cv2.imshow("Image", image)
     cv2.imwrite("modules/shot.jpg", image)
     cv2.waitKey()
-
+cam.release()
 cv2.destroyAllWindows()

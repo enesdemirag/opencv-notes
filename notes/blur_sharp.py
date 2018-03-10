@@ -35,3 +35,6 @@ dst = cv2.fastNlMeansDenoisingColored(image, None, 6, 6, 7, 21) # For color imag
 
 
 #Sharpening
+|-1 -1 -1|
+|-1 +9 -1| #Sum is 1 so don't need to normalization
+|-1 -1 -1|

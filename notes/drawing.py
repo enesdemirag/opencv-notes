@@ -26,7 +26,7 @@ for i, col in enumerate(color):
     histogram = cv2.calcHist([image], [i], None, [256], [0, 256]) # Inserted i for channel
     plt.plot(histogram, color = col)
     plt.xlim([0,256])
-    
+
 plt.show()
 
 image = np.zeros((512,512,3), np.uint8) # Makes a black square 3 for BGR colors
@@ -35,19 +35,23 @@ image_bw = np.zeros((512,512), np.uint8) # This is for Black & White image (2 di
 cv2.line(image, (0,0), (511,511), (255,127,0), 5) # Draw a line from 0,0 to 512,512 thickness of 5 pixels with the color (255,127,0) blueish
 
 cv2.line(image, starting cordinates, ending cordinates, color, thickness)
-cv2.rectangle(image, starting vertex, opposite vertex, color, thickness) # -1 for thickness fills inside 
-cv2.cirlce(image, center, radius, color, fill) # -1 for thickness fills inside 
+cv2.rectangle(image, starting vertex, opposite vertex, color, thickness) # -1 for thickness fills inside
+cv2.cirlce(image, center, radius, color, fill) # -1 for thickness fills inside
 
 pts = np.array( [[10,50], [400,50], [90,200], [50,500]], np.int32) # Define a polygon with corner points
 pts = pts.reshape((-1,1,2)) # Reshape the points to tell cv2 we want a shape
-cv2.polylines(image, [pts], True, (0,0,255), 3) 
-# Draw a polygon in "image" with [pts] corners 
+cv2.polylines(image, [pts], True, (0,0,255), 3)
+# Draw a polygon in "image" with [pts] corners
 # True for combine the first and the last points
 # color of the polygon is red (0,0,255) and the thickness is 3
 
+# Making a square
+square = np.zeros((300, 300), np.uint8)
+cv2.rectangle(square, (50, 50), (250, 250), 255, -2)
+
+# Making a ellipse
+ellipse = np.zeros((300, 300), np.uint8)
+cv2.ellipse(ellipse, (150, 150), (150, 150), 90, 30, 45, 255, -1)
+
 cv2.putText(image, 'Hello World!', (75,290), cv2.FONT_HERSHEY_COMPLEX, 2, (100,170,0), 3) # Adding text
 # cv2.putText(image, 'Text to Display', bottom left starting point, Font, Font Size, Color, Thickness)
-
-
-
-

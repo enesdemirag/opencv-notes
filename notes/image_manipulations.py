@@ -1,6 +1,6 @@
 """ Translation Matrix T = | 1 0 Tx |
                            | 0 1 Ty | """
-                           
+
 height, width = image.shape[:2]
 shift_height, shift_width = height/4, width/4
 
@@ -12,7 +12,7 @@ img_translation = cv2.warpAffine(image, T, (width, height)) # Shifting quarter o
 
 """ Rotation Matrix R = | cosx -sinx | x is angle
                         | sinx  cosx | """
-                        
+
 R = cv2.getRotationMatrix2D((width/2, height/2), 90, .5) # Rotation Matrix
 # cv2.getRotationMatrix2D(rotation_center_x, rotation_center_y, angle of rotation, scale)
 # getRotationMatrix2D rotates and scales at the same time
@@ -28,7 +28,7 @@ flipped_image = cv2.flip(image, 0) # Flips image horizontally. Needs negative va
 #Interpolation Algorithms
 cv2.INTER_AREA          # Good for shrinking or down ampling
 cv2.INTER_NEAREST       # Fastest
-cv2.INTER_LINEAR        # Good for zooming or up sampling (default) 
+cv2.INTER_LINEAR        # Good for zooming or up sampling (default)
 cv2.INTER_CUBIC         # Better
 cv2.INTER_LANCZOS4      # Best
 
@@ -52,3 +52,9 @@ start_row, start_col = 100, 100
 end_row, end_col = height - 100, width - 100
 cropped = image[start_row:end_row , start_col:end_col]
 
+# Arithmetic Operations - Brightness
+
+M = np.ones(image.shape, dtype = "uint8") # Numpy function for creating matrix of ones
+
+bright_image = cv2.add(image, M*100)
+dark_image = cv2.subtract(image, M*100)

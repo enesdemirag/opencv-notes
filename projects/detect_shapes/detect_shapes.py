@@ -5,7 +5,6 @@ import cv2
 #image = cv2.imread("modules/shapes_and_colors.jpg")
 cam = cv2.VideoCapture(0)
 t, image = cam.read()
-cv2.imwrite("modules/shot.jpg", image)
 
 resized = imutils.resize(image, width=300)
 ratio = image.shape[0] / float(resized.shape[0])
@@ -34,6 +33,7 @@ for c in contours:
     cv2.drawContours(image, [c], -1, (0, 255, 0), 2)
     cv2.putText(image, shape, (cX, cY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
     cv2.imshow("Image", image)
+    cv2.imwrite("modules/shot.jpg", image)
     cv2.waitKey()
 
 cv2.destroyAllWindows()

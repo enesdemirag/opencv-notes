@@ -6,7 +6,7 @@ import cv2
 cam = cv2.VideoCapture(0)
 t, image = cam.read()
 
-resized = imutils.resize(image, width=300)
+resized = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation = cv2.INTER_CUBIC)
 ratio = image.shape[0] / float(resized.shape[0])
 
 gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
@@ -33,6 +33,7 @@ for c in contours:
     cv2.drawContours(image, [c], -1, (0, 255, 0), 2)
     cv2.putText(image, shape, (cX, cY), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
     cv2.imshow("Image", image)
+    cv2.imshow("Thresh", thresh)
     cv2.imwrite("modules/shot.jpg", image)
     cv2.waitKey()
 cam.release()

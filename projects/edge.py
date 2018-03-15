@@ -19,7 +19,7 @@ def show_stages(image):
     tight = cv2.Canny(blurred, 225, 250)
     auto = auto_canny(blurred)
 
-    cv2.imshow("Stages", np.hstack([resize(gray), resize(blurred), resize(wide), resize(tight), resize(auto)]))
+    cv2.imshow("Stages", np.hstack([resize(blurred), resize(wide), resize(tight), resize(auto)]))
     return auto
 
 cam = cv2.VideoCapture(0)

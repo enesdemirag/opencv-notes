@@ -26,7 +26,7 @@ def color_mask(image, color = "Red"):
 while True:
     ret, image = cam.read()
 
-    filtered = color_mask(image, color = "Green")
+    filtered = color_mask(image, color = "Red")
     threshed = find_shape(filtered)
 
     #grayfilter = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)

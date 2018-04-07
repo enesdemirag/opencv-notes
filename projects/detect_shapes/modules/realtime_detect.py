@@ -30,7 +30,7 @@ while True:
     resized = imutils.resize(image, width=300)
     ratio = image.shape[0] / float(resized.shape[0])
 
-    filtered = color_mask(image, color = "Blue")
+    filtered = color_mask(image, color = "Red")
     #blurr = cv2.GaussianBlur(image, (7,7), 0)
     threshed = find_shape(filtered)
 

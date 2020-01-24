@@ -3,7 +3,7 @@ Erosion  # Removes pixels at the boundaries of objects in an image
 Opening  # Erosion + Dilation
 Closing  # Dilation + Erosion --> Good for removing noise
 
-erosion_image = cv2.erove(image, kernel, iterations = 1)
+erosion_image = cv2.erode(image, kernel, iterations = 1)
 dilation_image = cv2.dilate(image, kernel, iterations = 1)
 
 #Morphology Operations
